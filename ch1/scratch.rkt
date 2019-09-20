@@ -1,20 +1,20 @@
 #lang sicp
 ;; scratch
-(define (sqrt x)
-  (sqrt-iter 1.0 x))
-(define (sqrt-iter guess x)
-  (if (good-enough? guess x)
-      guess
-      (sqrt-iter (improve guess x) x)))
-(define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.0001))
-(define (improve guess x)
-  (average guess (/ x guess)))
-(define (average x y)
-  (/ (+ x y) 2))
-(define (square x)
-  (* x x))
 
-(sqrt 9)
-(sqrt 2)
-(square (sqrt 10))
+
+;; Procedures as Black-box Abstractions
+;; (define (sqrt x)
+;;   (define (good-enough? guess)
+;;     (< (abs (- (square guess) x))
+;;        0.00001))
+;;   (define (improve guess) (average guess (/ x guess)))
+;;   (define (sqrt-iter guess)
+;;     (if (good-enough? guess)
+;;         guess
+;;         (sqrt-iter (improve guess))))
+;;   (sqrt-iter 1.0))
+;; (define (average x y)
+;;   (/ (+ x y) 2))
+;; (define (square x)
+;;   (* x x))
+
