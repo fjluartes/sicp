@@ -1,20 +1,27 @@
 #lang sicp
 ;; scratch
+;; recursive factorial
+;; (define (factorial n)
+;;   (if (= n 1)
+;;       1
+;;       (* n (factorial (- n 1)))))
 
+;; iterative factorial
+(define (factorial n)
+  (fact-iter 1 1 n))
+(define (fact-iter product counter max-count)
+  (if (> counter max-count)
+      product
+      (fact-iter (* counter product)
+                 (+ counter 1)
+                 max-count)))
 
-;; Procedures as Black-box Abstractions
-;; (define (sqrt x)
-;;   (define (good-enough? guess)
-;;     (< (abs (- (square guess) x))
-;;        0.00001))
-;;   (define (improve guess) (average guess (/ x guess)))
-;;   (define (sqrt-iter guess)
-;;     (if (good-enough? guess)
-;;         guess
-;;         (sqrt-iter (improve guess))))
-;;   (sqrt-iter 1.0))
-;; (define (average x y)
-;;   (/ (+ x y) 2))
-;; (define (square x)
-;;   (* x x))
+;; block structure fact-iter
+;; (define (factorial n)
+;;   (define (iter product counter)
+;;     (if (> counter n)
+;;         product
+;;         (iter (* product counter)
+;;               (+ counter 1))))
+;;   (iter 1 1))
 
